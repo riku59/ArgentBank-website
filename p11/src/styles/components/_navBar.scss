@@ -1,0 +1,26 @@
+.navigation {
+  img {
+    height: 55px;
+  }
+  .login {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    .svg-inline--fa {
+      color: rgb(78, 78, 78);
+    }
+    a {
+      color: rgb(78, 78, 78);
+      text-decoration: none;
+      font-weight: 800;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  padding: 5px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
