@@ -1,0 +1,39 @@
+.error {
+  .bg-error {
+    background: #12002b;
+    height: 42vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    h3 {
+      color: white;
+      font-size: 50px;
+      margin-bottom: 70px;
+    }
+    h4 {
+      color: white;
+      font-size: 22px;
+      margin-bottom: 50px;
+    }
+    button {
+      display: flex;
+      margin: 20px auto 50px;
+
+      padding: 10px;
+      border: none;
+      background: white;
+      color: #12002b;
+      font-weight: 800;
+      font-size: 18px;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+  }
+  h2 {
+    text-align: center;
+    font-size: 400px;
+    margin-bottom: -93px;
+    color: #12002b;
+  }
+}

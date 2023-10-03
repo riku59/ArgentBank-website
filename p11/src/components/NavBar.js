@@ -6,7 +6,9 @@ import { faUserCircle } from "@fortawesome/free-solid-svg-icons";
 const NavBar = () => {
   return (
     <div className="navigation">
-      <img src="./argentBankLogo.png" alt="" />
+      <NavLink to="/">
+        <img src="./argentBankLogo.png" alt="" />
+      </NavLink>
       <div className="login">
         <FontAwesomeIcon icon={faUserCircle} />
         <NavLink to="/login">Sign In</NavLink>

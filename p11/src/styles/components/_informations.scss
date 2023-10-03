@@ -1,0 +1,26 @@
+.informations {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  border-bottom: 2px solid #ccc;
+  .imgInfo {
+    width: 150px;
+    border: 10px solid #00bc77;
+    border-radius: 50%;
+    padding: 13px;
+  }
+  .feature-item {
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .feature-title {
+    margin: 20px 0 8px;
+    font-size: 1.3rem;
+    text-align: center;
+  }
+  .feature-text {
+    margin: 10px 0;
+    text-align: center;
+  }
+}
