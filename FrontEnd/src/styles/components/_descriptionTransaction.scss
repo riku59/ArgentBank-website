@@ -1,0 +1,13 @@
+.descriptionTransaction {
+  .info {
+    display: grid;
+    grid-template-columns: 26% 25% 1fr 1fr;
+    padding: 5px 10px;
+    background: #61b37b;
+    text-align: left;
+    p {
+      color: white;
+      font-weight: lighter;
+    }
+  }
+}

@@ -1,13 +1,24 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserCircle } from "@fortawesome/free-solid-svg-icons";
-import { signIn } from "../actions/auth.action";
+import { setToken, signIn } from "../actions/auth.action";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import {
+  getUserProfile,
+  setFirstName,
+  setLastName,
+  setUserName,
+} from "../actions/profile.action";
 
 const Form = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
+
+  const dispatch = useDispatch();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -19,10 +30,28 @@ const Form = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log(e);
 
     try {
       const response = await signIn(formData);
       console.log(response);
+      const token = response.token;
+      console.log(token);
+
+      dispatch(setToken(token));
+      navigate("/User");
+
+      const userProfile = await getUserProfile(token);
+      console.log(userProfile); // Les données de profil de l'utilisateur
+      const firstName = userProfile.firstName;
+      const lastName = userProfile.lastName;
+      const userName = userProfile.userName;
+      localStorage.setItem("user", JSON.stringify(userProfile));
+      localStorage.setItem("token", token);
+      console.log(firstName);
+      dispatch(setFirstName(firstName));
+      dispatch(setLastName(lastName));
+      dispatch(setUserName(userName));
     } catch (error) {
       console.log(error);
     }

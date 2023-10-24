@@ -1,0 +1,51 @@
+.container-Transaction {
+  background: white;
+  width: 80%;
+  padding: 1.5rem;
+  display: grid;
+  align-items: center;
+
+  grid-template-columns: 85% 15%;
+  grid-template-areas:
+    "a1  btn"
+    "a2  btn "
+    "a3  btn";
+  .title {
+    grid-area: a1;
+    text-align: left;
+  }
+  .money {
+    grid-area: a2;
+    text-align: left;
+    font-size: 2.5rem;
+    color: #2c3e50;
+  }
+  .balance {
+    grid-area: a3;
+    text-align: left;
+  }
+  .btn-view {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-area: btn;
+    // height: 43%;
+
+    padding: 8px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    border-color: #00bc77;
+    background: #00bc77;
+
+    color: white;
+  }
+  .close {
+    color: #2c3e50;
+    display: flex;
+    justify-content: center;
+    grid-area: btn;
+    cursor: pointer;
+    font-size: 3rem;
+    font-weight: bold;
+  }
+}

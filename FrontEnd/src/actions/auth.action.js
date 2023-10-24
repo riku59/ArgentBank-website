@@ -2,19 +2,24 @@ import axios from "axios";
 
 export const TOKEN_LOGIN = "TOKEN_LOGIN";
 
+export const setToken = (token) => {
+  return {
+    type: TOKEN_LOGIN,
+    payload: token,
+  };
+};
+
 export const signIn = async (id) => {
   try {
     const response = await axios.post(
       "http://localhost:3001/api/v1/user/login",
       id
     );
-    // dispatch({ type: TOKEN_LOGIN, payload: response.data.body });
     console.log(response.data.body); //token
 
-    return response.data;
+    return response.data.body;
   } catch (error) {
     if (error.response) {
-      // La requête a été faite et le serveur a répondu avec un code d'état différent de 2xxconsole.log(error.reponse.data);
       throw error.response.data;
     }
   }

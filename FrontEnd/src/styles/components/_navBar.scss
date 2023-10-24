@@ -6,6 +6,7 @@
     display: flex;
     align-items: center;
     gap: 5px;
+    font-weight: bold;
     .svg-inline--fa {
       color: rgb(78, 78, 78);
     }
@@ -15,6 +16,21 @@
       font-weight: 800;
       &:hover {
         text-decoration: underline;
+      }
+    }
+    .div_signOut {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .whenLogin {
+      display: flex;
+      gap: 20px;
+      .logOut {
+        border: none;
+        font-weight: bold;
+        background: none;
+        font-size: 16px;
       }
     }
   }

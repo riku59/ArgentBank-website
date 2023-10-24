@@ -1,15 +1,65 @@
 import { TOKEN_LOGIN } from "../actions/auth.action";
+import {
+  EDIT_USER_NAME,
+  FIRST_NAME,
+  LAST_NAME,
+  LOGOUT,
+  USER_NAME,
+} from "../actions/profile.action";
 
-const initialState = {};
+const token = localStorage.getItem("token");
+const user = JSON.parse(localStorage.getItem("user"));
+console.log(user);
+let initialState;
 
-export default function postReducer(state = initialState, action) {
+if (token && user) {
+  initialState = {
+    token: token,
+    firstName: user.firstName,
+    lastName: user.lastName,
+  };
+} else {
+  initialState = {
+    token: null,
+    fistName: null,
+    lastName: null,
+  };
+}
+
+const authReducer = (state = initialState, action) => {
   switch (action.type) {
     case TOKEN_LOGIN:
       return {
         ...state,
         token: action.payload,
       };
+    case FIRST_NAME:
+      return {
+        ...state,
+        firstName: action.payload,
+      };
+    case LAST_NAME:
+      return {
+        ...state,
+        lastName: action.payload,
+      };
+    case USER_NAME:
+      return {
+        ...state,
+        userName: action.payload,
+      };
+    case LOGOUT:
+      return {
+        ...initialState,
+      };
+    case EDIT_USER_NAME:
+      return {
+        ...state,
+        userName: action.payload.userName,
+      };
     default:
       return state;
   }
-}
+};
+
+export default authReducer;
