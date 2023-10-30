@@ -9,13 +9,23 @@
       padding-bottom: 15px;
     }
     .edit-button {
-      padding: 10px;
+      padding: 12px 30px;
       background: #00bc77;
       color: white;
       font-weight: bold;
       border-color: #00bc77;
       margin-bottom: 20px;
     }
+    .disabled-button {
+      padding: 12px 30px;
+      background-color: #9e9e9e;
+      color: #000000;
+      cursor: not-allowed;
+      border-color: #9e9e9e;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
     .box-transaction {
       display: flex;
       flex-direction: column;
@@ -47,9 +57,10 @@
       justify-content: center;
       margin-top: 20px;
       gap: 10px;
-      .edit-button {
-        padding: 12px 30px;
-      }
+    }
+    .success-message {
+      color: #00bc77;
+      margin-bottom: 10px;
     }
   }
 }

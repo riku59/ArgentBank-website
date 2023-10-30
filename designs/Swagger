@@ -1,0 +1,74 @@
+paths:
+  /transaction/{id}/update-note:
+    put:
+      security:
+        - Bearer: []
+      tags:
+        - User Module
+      summary: Mettre à jour la note d'une transaction
+      description: API pour mettre à jour la note d'une transaction
+      parameters:
+        - in: path
+          name: id
+          description: Identifiant de la transaction à mettre à jour
+          required: true
+          type: integer
+        - in: body
+          name: body
+          description: Nouvelle note de la transaction
+          required: true
+          schema:
+            type: object
+            properties:
+              note:
+                type: string
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Note de la transaction mise à jour avec succès
+          schema:
+            $ref: '#/definitions/ApiResponse'
+        '400':
+          description: Champ non valide
+        '500':
+          description: Erreur interne du serveur
+
+
+
+
+paths:
+  /transaction/{id}/update-category:
+    put:
+      security:
+        - Bearer: []
+      tags:
+        - User Module
+      summary: Mettre à jour la catégorie d'une transaction
+      description: API pour mettre à jour la catégorie d'une transaction
+      parameters:
+        - in: path
+          name: id
+          description: Identifiant de la transaction à mettre à jour
+          required: true
+          type: integer
+        - in: body
+          name: body
+          description: Nouvelle catégorie de la transaction
+          required: true
+          schema:
+            type: object
+            properties:
+              category:
+                type: string
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Catégorie de la transaction mise à jour avec succès
+          schema:
+            $ref: '#/definitions/ApiResponse'
+        '400':
+          description: Champ non valide
+        '500':
+          description: Erreur interne du serveur

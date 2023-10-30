@@ -57,12 +57,13 @@ export const logout = () => {
   };
 };
 
-export const editProfile = async (userName, token) => {
+export const editProfile = (userName, token) => {
   return async (dispatch) => {
+    console.log({ userName });
     try {
       const response = await axios.put(
         "http://localhost:3001/api/v1/user/profile",
-        userName,
+        { userName },
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -71,8 +72,9 @@ export const editProfile = async (userName, token) => {
       );
 
       console.log(response);
+      dispatch(setEditUserName(userName));
 
-      return response; // Retourne les données de profil de l'utilisateur
+      return response.data; // Retourne les données de profil de l'utilisateur
     } catch (error) {
       if (error.response) {
         throw error.response.data;

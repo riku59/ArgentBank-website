@@ -13,6 +13,7 @@ import {
 
 const Form = () => {
   const navigate = useNavigate();
+  const [errorLog, setErrorLog] = useState(null);
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -48,12 +49,12 @@ const Form = () => {
       const userName = userProfile.userName;
       localStorage.setItem("user", JSON.stringify(userProfile));
       localStorage.setItem("token", token);
-      console.log(firstName);
       dispatch(setFirstName(firstName));
       dispatch(setLastName(lastName));
       dispatch(setUserName(userName));
     } catch (error) {
       console.log(error);
+      setErrorLog("E-mail ou mot de passe incorrect");
     }
   };
 
@@ -65,7 +66,7 @@ const Form = () => {
           <h1 className="form-title">Sign In</h1>
         </div>
         <div className="form-body">
-          <label htmlFor="username">Username</label>
+          <label htmlFor="username">Adresse e-mail</label>
           <input
             type="text"
             id="email"
@@ -89,6 +90,7 @@ const Form = () => {
             </label>
           </div>
           <div className="form-footer">
+            {errorLog && <div className="error-message">{errorLog}</div>}
             <button type="submit">Sign In</button>
           </div>
         </div>

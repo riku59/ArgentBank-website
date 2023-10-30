@@ -17,12 +17,14 @@ if (token && user) {
     token: token,
     firstName: user.firstName,
     lastName: user.lastName,
+    userName: user.userName,
   };
 } else {
   initialState = {
     token: null,
-    fistName: null,
+    firstName: null,
     lastName: null,
+    userName: null,
   };
 }
 
@@ -50,12 +52,16 @@ const authReducer = (state = initialState, action) => {
       };
     case LOGOUT:
       return {
-        ...initialState,
+        ...state, // tout mettre a nul, surtout le token pour que logout deviens bien login
+        firstName: null,
+        lastName: null,
+        userName: null,
+        token: null,
       };
     case EDIT_USER_NAME:
       return {
         ...state,
-        userName: action.payload.userName,
+        userName: action.payload,
       };
     default:
       return state;
