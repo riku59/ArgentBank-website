@@ -2,21 +2,24 @@ import React, { useEffect, useState } from "react";
 import Transactions from "./Transactions";
 import { useDispatch, useSelector } from "react-redux";
 import { editProfile, setEditUserName } from "../actions/profile.action";
-import { Navigate } from "react-router-dom";
+import { Navigate, redirect, useNavigate } from "react-router-dom";
 
 const ContainerTransaction = () => {
-  const user = useSelector((state) => state.postReducer);
+  const user = useSelector((state) => state.userReducer);
   const [editToggle, setEditToggle] = useState(false);
   const [editUserName, setEditUser] = useState(user.userName);
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const [isSaveButtonDisabled, setIsSaveButtonDisabled] = useState(true);
   const dispatch = useDispatch();
+  const redirect = useNavigate();
+  console.log(user);
 
-  if (!user.token) {
-    return <Navigate to="/login" />;
-  }
   useEffect(() => {
     const isUsernameModified = editUserName !== user.userName;
+
+    if (!user.token) {
+      redirect("/login");
+    }
 
     if (isUsernameModified) {
       // Si le nom d'utilisateur a été modifié, active le bouton Save
@@ -25,16 +28,16 @@ const ContainerTransaction = () => {
       // Si le UserName n'as pas été modifié, désactive le bouton
       setIsSaveButtonDisabled(true);
     }
-  });
+  }, []);
 
   const handleEditUserName = (e) => {
     e.preventDefault();
 
     const token = user.token;
-    localStorage.setItem(
-      "user",
-      JSON.stringify({ ...user, userName: editUserName })
-    ); // Mettre à jour le localStorage de userName pour ne pas le perdre lors de l'actualisation de la page
+    // localStorage.setItem(
+    //   "user",
+    //   JSON.stringify({ ...user, userName: editUserName })
+    // ); // Mettre à jour le localStorage de userName pour ne pas le perdre lors de l'actualisation de la page
 
     dispatch(editProfile(editUserName, token));
     console.log(`Nouveau nom :  ${editUserName}`);

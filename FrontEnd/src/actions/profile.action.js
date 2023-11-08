@@ -1,4 +1,5 @@
 import axios from "axios";
+import { setToken } from "./auth.action";
 
 export const FIRST_NAME = "FIRST_NAME";
 export const LAST_NAME = "LAST_NAME";
@@ -75,6 +76,30 @@ export const editProfile = (userName, token) => {
       dispatch(setEditUserName(userName));
 
       return response.data; // Retourne les données de profil de l'utilisateur
+    } catch (error) {
+      if (error.response) {
+        throw error.response.data;
+      }
+    }
+  };
+};
+
+export const loadProfile = (token) => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.post(
+        "http://localhost:3001/api/v1/user/profile",
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      dispatch(setUserName(response.data.body.userName));
+      dispatch(setLastName(response.data.body.lastName));
+      dispatch(setFirstName(response.data.body.firstName));
+      dispatch(setToken(token));
     } catch (error) {
       if (error.response) {
         throw error.response.data;

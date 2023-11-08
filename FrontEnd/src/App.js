@@ -4,8 +4,21 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import User from "./pages/User";
 import NoPage from "./pages/NoPage";
+import { useEffect } from "react";
+import { loadProfile } from "./actions/profile.action";
+import { useDispatch } from "react-redux";
 
 const App = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+
+    if (token) {
+      console.log("test");
+      dispatch(loadProfile(token));
+    }
+  }, []);
+
   return (
     <BrowserRouter>
       <Routes>

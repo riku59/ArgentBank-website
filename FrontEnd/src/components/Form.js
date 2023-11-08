@@ -47,7 +47,7 @@ const Form = () => {
       const firstName = userProfile.firstName;
       const lastName = userProfile.lastName;
       const userName = userProfile.userName;
-      localStorage.setItem("user", JSON.stringify(userProfile));
+      // localStorage.setItem("user", JSON.stringify(userProfile));
       localStorage.setItem("token", token);
       dispatch(setFirstName(firstName));
       dispatch(setLastName(lastName));

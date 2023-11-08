@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../actions/profile.action";
 
 const NavBar = () => {
-  const user = useSelector((state) => state.postReducer);
+  const user = useSelector((state) => state.userReducer);
 
   const token = user.token;
   const dispatch = useDispatch();
