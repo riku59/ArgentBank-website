@@ -142,7 +142,7 @@ paths:
         '200' :
           description: Details de la transaction récupérés avec succès
           schema:
-            $ref: '#/definitions/Transaction'
+            $ref: '#/definitions/TransactionId'
         '400':
           description: Erreur de requête
         '500':
@@ -273,7 +273,20 @@ definitions:
             type: string
           note:
             type: string
-  
+  ApiResponse:
+    type: object
+    properties:
+      status:
+        type: integer
+      message:
+        type: string
+      body:
+        type: object
+        properties:
+          id:
+            type: string
+          email:
+            type: string
   Category:
     type: object
     properties:
@@ -315,6 +328,27 @@ definitions:
         type: string
         format: date
         description: Date de la transaction
+      Description :
+        type : string
+        description : description de la transaction
+  TransactionId:
+    type: object
+    properties:
+      id:
+        type: integer
+        description: Identifiant de la transaction
+      amount:
+        type: number
+        description: Montant de la transaction
+      balance :
+        type : number
+      date:
+        type: string
+        format: date
+        description: Date de la transaction
+      Description :
+        type : string
+        description : description de la transaction
       type :
         type : string
         description: type de la transaction
@@ -325,6 +359,7 @@ definitions:
         type : string
       
       
+
 
 
 
