@@ -12,32 +12,19 @@ const ContainerTransaction = () => {
   const [isSaveButtonDisabled, setIsSaveButtonDisabled] = useState(true);
   const dispatch = useDispatch();
   const redirect = useNavigate();
-  console.log(user);
 
   useEffect(() => {
     const isUsernameModified = editUserName !== user.userName;
 
-    if (!user.token) {
-      redirect("/login");
-    }
-
-    if (isUsernameModified) {
-      // Si le nom d'utilisateur a été modifié, active le bouton Save
-      setIsSaveButtonDisabled(false);
-    } else {
-      // Si le UserName n'as pas été modifié, désactive le bouton
-      setIsSaveButtonDisabled(true);
-    }
-  }, []);
-
+    setIsSaveButtonDisabled(!isUsernameModified); //si le nom est différent, active le bouton save
+  }, [editUserName, user.userName, user.token]);
+  if (!user.token) {
+    redirect("/login");
+  }
   const handleEditUserName = (e) => {
     e.preventDefault();
 
     const token = user.token;
-    // localStorage.setItem(
-    //   "user",
-    //   JSON.stringify({ ...user, userName: editUserName })
-    // ); // Mettre à jour le localStorage de userName pour ne pas le perdre lors de l'actualisation de la page
 
     dispatch(editProfile(editUserName, token));
     console.log(`Nouveau nom :  ${editUserName}`);

@@ -14,7 +14,6 @@ const App = () => {
     const token = localStorage.getItem("token");
 
     if (token) {
-      console.log("test");
       dispatch(loadProfile(token));
     }
   }, []);

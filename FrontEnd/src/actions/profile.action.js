@@ -75,7 +75,7 @@ export const editProfile = (userName, token) => {
       console.log(response);
       dispatch(setEditUserName(userName));
 
-      return response.data; // Retourne les données de profil de l'utilisateur
+      return response.data; // Retourne les données de profil de l'utilisateur modifié
     } catch (error) {
       if (error.response) {
         throw error.response.data;
