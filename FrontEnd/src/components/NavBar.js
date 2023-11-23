@@ -23,7 +23,7 @@ const NavBar = () => {
   return (
     <div className="navigation">
       <NavLink to="/">
-        <img src="./argentBankLogo.png" alt="" />
+        <img src="./argentBankLogo.webp" alt="logo argentBank" />
       </NavLink>
       <div className="login">
         <FontAwesomeIcon icon={faUserCircle} />
