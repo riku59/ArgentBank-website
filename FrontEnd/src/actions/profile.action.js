@@ -43,7 +43,6 @@ export const getUserProfile = async (token) => {
         },
       }
     );
-    console.log(response);
 
     return response.data.body; // Retourne les données de profil de l'utilisateur
   } catch (error) {
@@ -59,8 +58,8 @@ export const logout = () => {
 };
 
 export const editProfile = (userName, token) => {
+  // action asynchrone qui utilise redux-thunk
   return async (dispatch) => {
-    console.log({ userName });
     try {
       const response = await axios.put(
         "http://localhost:3001/api/v1/user/profile",
@@ -72,7 +71,6 @@ export const editProfile = (userName, token) => {
         }
       );
 
-      console.log(response);
       dispatch(setEditUserName(userName));
 
       return response.data; // Retourne les données de profil de l'utilisateur modifié
@@ -85,6 +83,7 @@ export const editProfile = (userName, token) => {
 };
 
 export const loadProfile = (token) => {
+  // action asynchrone qui utilise redux-thunk
   return async (dispatch) => {
     try {
       const response = await axios.post(
@@ -96,7 +95,7 @@ export const loadProfile = (token) => {
           },
         }
       );
-      dispatch(setUserName(response.data.body.userName));
+      dispatch(setUserName(response.data.body.userName)); // mise a jour du redux
       dispatch(setLastName(response.data.body.lastName));
       dispatch(setFirstName(response.data.body.firstName));
       dispatch(setToken(token));

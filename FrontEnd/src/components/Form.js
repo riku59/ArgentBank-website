@@ -31,19 +31,16 @@ const Form = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(e);
 
     try {
       const response = await signIn(formData);
-      console.log(response);
       const token = response.token;
-      console.log(token);
 
       dispatch(setToken(token));
       navigate("/User");
 
-      const userProfile = await getUserProfile(token);
-      console.log(userProfile); // Les données de profil de l'utilisateur
+      const userProfile = await getUserProfile(token); // données de profil de l'utilisateur
+
       const firstName = userProfile.firstName;
       const lastName = userProfile.lastName;
       const userName = userProfile.userName;

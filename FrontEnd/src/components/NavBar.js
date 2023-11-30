@@ -17,7 +17,6 @@ const NavBar = () => {
     dispatch(logout());
     localStorage.removeItem("token");
     navigateToHome("/");
-    console.log(token);
   };
 
   return (

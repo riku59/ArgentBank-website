@@ -15,9 +15,8 @@ export const signIn = async (id) => {
       "http://localhost:3001/api/v1/user/login",
       id
     );
-    console.log(response.data.body); //token
 
-    return response.data.body;
+    return response.data.body; // token
   } catch (error) {
     if (error.response) {
       throw error.response.data;

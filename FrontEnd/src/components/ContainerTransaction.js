@@ -15,19 +15,18 @@ const ContainerTransaction = () => {
 
   useEffect(() => {
     const isUsernameModified = editUserName !== user.userName;
-
+    if (!user.token) {
+      redirect("/login");
+    }
     setIsSaveButtonDisabled(!isUsernameModified); //si le nom est différent, active le bouton save
   }, [editUserName, user.userName, user.token]);
-  if (!user.token) {
-    redirect("/login");
-  }
+
   const handleEditUserName = (e) => {
     e.preventDefault();
 
     const token = user.token;
 
     dispatch(editProfile(editUserName, token));
-    console.log(`Nouveau nom :  ${editUserName}`);
     setShowSuccessMessage(true);
     setTimeout(() => {
       // affiche le message de succes de changement de nom pendant 3 s
