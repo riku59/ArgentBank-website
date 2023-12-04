@@ -10,8 +10,8 @@ import { configureStore } from "@reduxjs/toolkit";
 import rootReducer from "./reducers"; // il va lire par default index.js, donc pas besoin de définir le chemin complet
 
 const store = configureStore({
-  reducer: rootReducer,
-  middleware: [thunk],
+  reducer: rootReducer, // gère l'état global de l'aplication
+  middleware: [thunk], // gère les action asynchrone
   devTools: true, // penser a le mettre en false pour enlever le plugin
 });
 

@@ -9,7 +9,7 @@ const Home = () => {
     <div className="page">
       <NavBar />
       <Header />
-      <div className="informations">
+      <section className="informations">
         <Informations
           image="./icon-chat.webp"
           title="You are our #1 priority"
@@ -25,7 +25,7 @@ const Home = () => {
           title="Security you can trust"
           text="We use top of the line encryption to make sure your data and money is always safe."
         />
-      </div>
+      </section>
       <Footers />
     </div>
   );
