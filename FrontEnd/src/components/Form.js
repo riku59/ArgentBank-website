@@ -6,9 +6,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import {
   getUserProfile,
-  setFirstName,
-  setLastName,
-  setUserName,
+  setDataUser,
+  // setFirstName,
+  // setLastName,
+  // setUserName,
 } from "../actions/profile.action";
 
 const Form = () => {
@@ -41,14 +42,16 @@ const Form = () => {
 
       const userProfile = await getUserProfile(token); // données de profil de l'utilisateur
 
-      const firstName = userProfile.firstName;
-      const lastName = userProfile.lastName;
-      const userName = userProfile.userName;
+      // const firstName = userProfile.firstName;
+      // const lastName = userProfile.lastName;
+      // const userName = userProfile.userName;
+      const { firstName, lastName, userName } = userProfile;
       // localStorage.setItem("user", JSON.stringify(userProfile));
       localStorage.setItem("token", token);
-      dispatch(setFirstName(firstName));
-      dispatch(setLastName(lastName));
-      dispatch(setUserName(userName));
+      dispatch(setDataUser(firstName, lastName, userName));
+      // dispatch(setFirstName(firstName));
+      // dispatch(setLastName(lastName));
+      // dispatch(setUserName(userName));
     } catch (error) {
       console.log(error);
       setErrorLog("E-mail ou mot de passe incorrect");

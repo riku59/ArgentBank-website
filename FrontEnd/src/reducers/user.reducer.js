@@ -1,10 +1,11 @@
 import { TOKEN_LOGIN } from "../actions/auth.action";
 import {
+  DATA_USER,
   EDIT_USER_NAME,
-  FIRST_NAME,
-  LAST_NAME,
+  // FIRST_NAME,
+  // LAST_NAME,
   LOGOUT,
-  USER_NAME,
+  // USER_NAME,
 } from "../actions/profile.action";
 
 // const token = localStorage.getItem("token");
@@ -34,28 +35,36 @@ const authReducer = (state = initialState, action) => {
         ...state,
         token: action.payload,
       };
-    case FIRST_NAME:
+    case DATA_USER:
+      const { lastName, firstName, userName } = action.payload;
       return {
         ...state,
-        firstName: action.payload,
+        lastName,
+        firstName,
+        userName,
       };
-    case LAST_NAME:
-      return {
-        ...state,
-        lastName: action.payload,
-      };
-    case USER_NAME:
-      return {
-        ...state,
-        userName: action.payload,
-      };
+    // case FIRST_NAME:
+    //   return {
+    //     ...state,
+    //     firstName: action.payload,
+    //   };
+    // case LAST_NAME:
+    //   return {
+    //     ...state,
+    //     lastName: action.payload,
+    //   };
+    // case USER_NAME:
+    //   return {
+    //     ...state,
+    //     userName: action.payload,
+    //   };
     case LOGOUT:
       return {
-        ...state, // tout mettre a nul, surtout le token pour que logout deviens bien login
-        firstName: null,
-        lastName: null,
-        userName: null,
-        token: null,
+        ...initialState, // tout mettre a nul, surtout le token pour que logout deviens bien login
+        // firstName: null,
+        // lastName: null,
+        // userName: null,
+        // token: null,
       };
     case EDIT_USER_NAME:
       return {

@@ -292,26 +292,33 @@ definitions:
   TransactionId:
     type: object
     properties:
-      id:
+      status:
         type: integer
-        description: Identifiant de la transaction
-      amount:
-        type: number
-        description: Montant de la transaction
-      balance:
-        type: number
-      date:
+      message:
         type: string
-        format: date
-        description: Date de la transaction
-      Description:
-        type: string
-        description: description de la transaction
-      type:
-        type: string
-        description: type de la transaction
-      category:
-        type: string
-        description: Catégorie de la transaction
-      note:
-        type: string
+      body:
+        type: object
+        properties:
+          id:
+            type: integer
+            description: Identifiant de la transaction
+          amount:
+            type: number
+            description: Montant de la transaction
+          balance:
+            type: number
+          date:
+            type: string
+            format: date
+            description: Date de la transaction
+          Description:
+            type: string
+            description: description de la transaction
+          type:
+            type: string
+            description: type de la transaction
+          category:
+            type: string
+            description: Catégorie de la transaction
+          note:
+            type: string

@@ -2,6 +2,7 @@ import axios from "axios";
 import { setToken } from "./auth.action";
 
 export const FIRST_NAME = "FIRST_NAME";
+export const DATA_USER = "DATA_USER";
 export const LAST_NAME = "LAST_NAME";
 export const USER_NAME = "USER_NAME";
 export const EDIT_USER_NAME = "EDIT_USER_NAME";
@@ -23,6 +24,12 @@ export const setUserName = (userName) => {
   return {
     type: USER_NAME,
     payload: userName,
+  };
+};
+export const setDataUser = (firstName, lastName, userName) => {
+  return {
+    type: DATA_USER,
+    payload: { firstName, lastName, userName },
   };
 };
 export const setEditUserName = (userName) => {
@@ -96,9 +103,9 @@ export const loadProfile = (token) => {
         }
       );
       dispatch(setUserName(response.data.body.userName)); // mise a jour du redux
-      dispatch(setLastName(response.data.body.lastName));
-      dispatch(setFirstName(response.data.body.firstName));
-      dispatch(setToken(token));
+      // dispatch(setLastName(response.data.body.lastName));
+      // dispatch(setFirstName(response.data.body.firstName));
+      // dispatch(setToken(token));
     } catch (error) {
       if (error.response) {
         throw error.response.data;

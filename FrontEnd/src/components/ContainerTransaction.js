@@ -12,7 +12,7 @@ const ContainerTransaction = () => {
   const [isSaveButtonDisabled, setIsSaveButtonDisabled] = useState(true);
   const dispatch = useDispatch();
   const redirect = useNavigate();
-
+  console.log(user);
   useEffect(() => {
     const isUsernameModified = editUserName !== user.userName;
     if (!user.token) {
