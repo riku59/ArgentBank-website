@@ -4,13 +4,7 @@ import { faUserCircle } from "@fortawesome/free-solid-svg-icons";
 import { setToken, signIn } from "../actions/auth.action";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import {
-  getUserProfile,
-  setDataUser,
-  // setFirstName,
-  // setLastName,
-  // setUserName,
-} from "../actions/profile.action";
+import { getUserProfile, setDataUser } from "../actions/profile.action";
 
 const Form = () => {
   const navigate = useNavigate();
@@ -41,17 +35,10 @@ const Form = () => {
       navigate("/User");
 
       const userProfile = await getUserProfile(token); // données de profil de l'utilisateur
-
-      // const firstName = userProfile.firstName;
-      // const lastName = userProfile.lastName;
-      // const userName = userProfile.userName;
       const { firstName, lastName, userName } = userProfile;
-      // localStorage.setItem("user", JSON.stringify(userProfile));
+
       localStorage.setItem("token", token);
       dispatch(setDataUser(firstName, lastName, userName));
-      // dispatch(setFirstName(firstName));
-      // dispatch(setLastName(lastName));
-      // dispatch(setUserName(userName));
     } catch (error) {
       console.log(error);
       setErrorLog("E-mail ou mot de passe incorrect");
