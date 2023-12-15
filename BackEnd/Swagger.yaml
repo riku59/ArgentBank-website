@@ -117,7 +117,7 @@ paths:
           schema:
             type: array
             items:
-              $ref: "#/definitions/TransactionId"
+              $ref: "#/definitions/TransactionResponse"
         "400":
           description: Erreur de requête
         "500":
@@ -215,22 +215,7 @@ definitions:
       password:
         type: string
         description: user password
-  Note:
-    type: object
-    properties:
-      status:
-        type: integer
-      message:
-        type: string
-      body:
-        type: object
-        properties:
-          id:
-            type: string
-          date:
-            type: string
-          note:
-            type: string
+
   ApiResponse:
     type: object
     properties:
@@ -245,22 +230,7 @@ definitions:
             type: string
           email:
             type: string
-  Category:
-    type: object
-    properties:
-      status:
-        type: integer
-      message:
-        type: string
-      body:
-        type: object
-        properties:
-          id:
-            type: string
-          date:
-            type: string
-          category:
-            type: string
+
   LoginResponse:
     type: object
     properties:
@@ -271,24 +241,6 @@ definitions:
     properties:
       userName:
         type: string
-  Transaction:
-    type: object
-    properties:
-      id:
-        type: integer
-        description: Identifiant de la transaction
-      amount:
-        type: number
-        description: Montant de la transaction
-      balance:
-        type: number
-      date:
-        type: string
-        format: date
-        description: Date de la transaction
-      Description:
-        type: string
-        description: description de la transaction
   TransactionId:
     type: object
     properties:
@@ -322,3 +274,56 @@ definitions:
             description: Catégorie de la transaction
           note:
             type: string
+            description: Note de la transaction
+
+  Transaction:
+    type: object
+    properties:
+      id:
+        type: integer
+        description: Identifiant de la transaction
+      amount:
+        type: number
+        description: Montant de la transaction
+      balance:
+        type: number
+        description: Solde après la transaction
+      date:
+        type: string
+        format: date
+        description: Date de la transaction
+      Description:
+        type: string
+        description: Description de la transaction
+      type:
+        type: string
+        description: Type de la transaction
+      category:
+        type: string
+        description: Catégorie de la transaction
+      note:
+        type: string
+        description: Note de la transaction
+
+  Account:
+    type: object
+    properties:
+      accountNumber:
+        type: string
+        description: Numéro du compte
+      transactions:
+        type: array
+        items:
+          $ref: "#/definitions/Transaction"
+
+  TransactionResponse:
+    type: object
+    properties:
+      status:
+        type: integer
+      message:
+        type: string
+      body:
+        type: array
+        items:
+          $ref: "#/definitions/Account"
